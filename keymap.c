@@ -7,7 +7,7 @@ enum layers {
 	_NUMBERS,
 	_FUNCTION
 };
-
+ 
 #define SYMBOLSTT 	TT(_SYMBOLS)
 #define SYMBOLS 	    TO(_SYMBOLS)
 #define NMBRS 	    TO(_NUMBERS)
@@ -28,8 +28,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	[_BASE] = LAYOUT(
 		KC_TAB, KC_Q, KC_W, KC_E, KC_R, KC_T,                                               KC_Y, KC_U, KC_I, KC_O, KC_P, KC_BSLS, 
 	 	CTL_ESC, KC_A, KC_S, KC_D, KC_F, KC_G,                                              KC_H, KC_J, KC_K, KC_L, KC_SCLN, KC_QUOT, 
-		KC_LSFT, KC_Z, KC_X, KC_C, KC_V, KC_B, KC_SPC, KC_LSFT,         KC_BSPC, SYMBOLSTT, KC_N, KC_M, KC_COMM, KC_DOT, KC_SLSH, KC_RSFT, 
-	 	            KC_LCTL, KC_LALT, KC_LGUI, 	KC_SPC, KC_LSFT,        KC_BSPC, SYMBOLSTT, KC_LCTL, KC_LALT, KC_NO
+		KC_LSFT, KC_Z, KC_X, KC_C, KC_V, KC_B, KC_SPC, KC_LSFT,         KC_BSPC, SYMBOLS, KC_N, KC_M, KC_COMM, KC_DOT, KC_SLSH, KC_RSFT, 
+	 	            KC_LCTL, KC_LALT, KC_LGUI, 	KC_SPC, KC_LSFT,        KC_BSPC, SYMBOLS, KC_LCTL, KC_LALT, KC_NO
 	),
 	[_SYMBOLS] = LAYOUT(
 		_______, KC_EXLM, KC_AT, 	KC_HASH, KC_DLR,	KC_PERC, 									 	  			  	  	_______, KC_LCBR, KC_RCBR, 	_______, KC_DEL, 			_______, 
@@ -77,25 +77,25 @@ bool oled_task_user(void) {
         // clang-format on
 
         oled_write_P(qmk_logo, false);
-        oled_write_P(PSTR("Kyria rev1.0\n\n"), false);
+        oled_write_P(PSTR("Kyria rev2.0\n\n"), false);
 
         // Host Keyboard Layer Status
         oled_write_P(PSTR("Layer: "), false);
         switch (get_highest_layer(layer_state|default_layer_state)) {
             case _BASE:
-                oled_write_P(PSTR("QWERTY\n"), false);
+                oled_write_P(PSTR("Base\n"), false);
                 break;
             case _SYMBOLS:
-                oled_write_P(PSTR("Dvorak\n"), false);
+                oled_write_P(PSTR("Symbols\n"), false);
                 break;
             case _NAVIGATION:
-                oled_write_P(PSTR("Colemak-DH\n"), false);
+                oled_write_P(PSTR("Navigation\n"), false);
                 break;
             case _NUMBERS:
-                oled_write_P(PSTR("Nav\n"), false);
+                oled_write_P(PSTR("Numbers\n"), false);
                 break;
             case _FUNCTION:
-                oled_write_P(PSTR("Sym\n"), false);
+                oled_write_P(PSTR("Functions\n"), false);
                 break;
             default:
                 oled_write_P(PSTR("Undefined\n"), false);
