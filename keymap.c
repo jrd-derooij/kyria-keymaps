@@ -8,62 +8,47 @@ enum layers {
 	_FUNCTION,
     _RGB
 };
- 
-#define SYMBOLSTT 	TT(_SYMBOLS)
-#define SYMBOLS     MO(_SYMBOLS)
-#define NMBRS 	    TO(_NUMBERS)
-#define BASELAY 	TO(_BASE)
-#define FUNCS 	    TO(_FUNCTION)
-#define NAV 	    MO(_NAVIGATION)
-#define ADJUST 	    TO(_RGB)
 
 #define CTL_ESC     MT(MOD_LCTL, KC_ESC)
 #define KC_UNDSC    LSFT(KC_MINUS)
-#define LSFT_NMBRS  MT(MOD_LSFT, NMBRS)
+#define LSFT_NMBRS  MT(MOD_LSFT, TO(_NUMBERS))
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	[_BASE] = LAYOUT(
 		KC_TAB  , KC_Q, KC_W, KC_E, KC_R, KC_T,                                               KC_Y, KC_U, KC_I, KC_O, KC_P, KC_BSLS, 
 	 	CTL_ESC, KC_A, KC_S, KC_D, KC_F, KC_G,                                              KC_H, KC_J, KC_K, KC_L, KC_SCLN, KC_QUOT, 
-		KC_LSFT, KC_Z, KC_X, KC_C, KC_V, KC_B, KC_SPC, NAV,         KC_BSPC, SYMBOLS, KC_N, KC_M, KC_COMM, KC_DOT, KC_SLSH, KC_RSFT, 
-	 	            KC_LCTL, KC_LALT, KC_LGUI, 	KC_SPC, NAV,        KC_BSPC, SYMBOLS, KC_LCTL, KC_LALT, KC_NO
+		KC_LSFT, KC_Z, KC_X, KC_C, KC_V, KC_B, KC_SPC, MO(_NAVIGATION),         KC_BSPC, MO(_SYMBOLS), KC_N, KC_M, KC_COMM, KC_DOT, KC_SLSH, KC_RSFT, 
+	 	            KC_LCTL, KC_LALT, KC_LGUI, 	KC_SPC, MO(_NAVIGATION),        KC_BSPC, MO(_SYMBOLS), KC_LCTL, KC_LALT, TO(_NUMBERS)
 	),
 	[_SYMBOLS] = LAYOUT(
 		_______, KC_1, KC_2, KC_3, KC_4, _______, 									 	  			  	KC_EQL, KC_LCBR, KC_RCBR, 	_______, KC_DEL, _______, 
 		_______, KC_5, KC_6, KC_7, KC_8, KC_EQL, 								 	  			  	  	KC_MINS, KC_LPRN, KC_RPRN, 	_______, KC_ENT, _______, 
-		LSFT_NMBRS, KC_9, KC_0, _______, _______, KC_GRV, _______, FUNCS, 		            _______, _______, KC_UNDSC, KC_LBRC, KC_RBRC, 	_______, NAV, _______, 
-							_______, _______, _______, _______, FUNCS, 	                _______, _______, _______, _______, ADJUST
+		_______, KC_9, KC_0, _______, _______, KC_GRV, _______, TG(_FUNCTION), 		            _______, _______, KC_UNDSC, KC_LBRC, KC_RBRC, 	_______, _______, TO(_NUMBERS), 
+							_______, _______, _______, _______, TG(_FUNCTION), 	                _______, _______, _______, _______, TO(_RGB)
 	),
-	// [_NAVIGATION] = LAYOUT(
-	// 	_______, _______, KC_HOME, KC_UP, 	KC_END, KC_PGUP, 												_______, _______, _______, _______, KC_DEL, _______, 
-	// 	_______, _______, KC_LEFT, KC_DOWN, KC_RGHT, KC_PGDN, 												_______, KC_RSFT, KC_LCTL, KC_LALT, KC_ENT, KC_INS, 
-	// 	_______, _______, KC_MUTE, KC_VOLD, KC_VOLU, KC_SLCK, _______, _______, 		  _______, _______, _______, _______, _______, _______, _______, KC_PSCR, 
-	// 							   _______, _______, _______, _______, _______, 		  _______, _______, _______, _______, _______
-	// ),
     [_NAVIGATION] = LAYOUT(
       _______, _______, _______, _______, _______, _______,                                     KC_PGUP, KC_HOME, KC_UP,   KC_END,  _______, _______,
       _______, KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, _______,                                     KC_PGDN, KC_LEFT, KC_DOWN, KC_RGHT, KC_ENT, KC_INS,
       _______, _______, _______, _______, _______, KC_SLCK, _______, _______, _______, _______,KC_PAUSE, KC_MPLY, KC_VOLD, KC_VOLU, KC_MUTE, KC_PSCR,
                                  _______, _______, _______, _______, _______, _______, _______, _______, _______, _______
     ),
-   
 	[_NUMBERS] = LAYOUT(
 		_______, _______, _______, KC_UP, 	_______, _______, 															KC_DOT, 		KC_7, 		KC_8, 		KC_9, 		KC_MINS, 	KC_ASTR, 
 		_______, KC_HOME, KC_LEFT, KC_DOWN, KC_RGHT, KC_END, 															KC_COMM, 		KC_4, 		KC_5, 		KC_6, 		KC_ENT, 	KC_PLUS, 
-		_______, _______, _______, _______, _______, _______, BASELAY, _______, 			_______, 	SYMBOLS, 	KC_0, 			KC_1, 		KC_2, 		KC_3, 		KC_SLSH, 	_______,
-								   _______, _______, _______, BASELAY, _______, 			_______, 	SYMBOLS, 	_______, 	_______, 	_______
+		_______, _______, _______, _______, _______, _______, TO(_BASE), _______, 			_______, 	TO(_SYMBOLS), 	KC_0, 			KC_1, 		KC_2, 		KC_3, 		KC_SLSH, 	_______,
+								   _______, _______, _______, TO(_BASE), _______, 			_______,    TO(_SYMBOLS), 	_______, 	_______, 	_______
 	),
 	[_FUNCTION] = LAYOUT(
 		_______, KC_F9, KC_F10, KC_F11, 	KC_F12, 	_______, 														_______, _______, _______, _______, _______, _______, 
 		_______, KC_F5, KC_F6,	KC_F7, 		KC_F8, 		_______, 														_______, KC_RSFT, KC_LCTL, KC_LALT, KC_LGUI, _______, 
-		_______, KC_F1, KC_F2, 	KC_F3, 		KC_F4, 		_______, BASELAY, _______, 				  _______, _______, _______, _______, _______, _______, _______, _______, 
-						   		_______, 	_______, 	_______, BASELAY, _______, 				  _______, _______, _______, _______, BASELAY
+		_______, KC_F1, KC_F2, 	KC_F3, 		KC_F4, 		_______, TO(_BASE), _______, 				  _______, _______, _______, _______, _______, _______, _______, _______, 
+						   		_______, 	_______, 	_______, TO(_BASE), _______, 				  _______, _______, _______, _______, TO(_BASE)
 	),
 	[_RGB] = LAYOUT(
 		_______, _______, _______, 	DF(_BASE), 		_______, _______, 													_______, _______, _______, _______, _______, 	_______, 
 		_______, _______, _______, 	DF(_SYMBOLS), 	_______, _______, 													RGB_TOG, RGB_SAI, RGB_HUI, RGB_VAI, RGB_MOD, 	_______, 
 		_______, _______, _______, 	DF(_NAVIGATION), _______, _______, _______, _______, 		  	_______, _______, 	_______, RGB_SAD, RGB_HUD, RGB_VAD, RGB_RMOD, 	_______, 
-									_______, 		_______, _______, _______, _______, 			_______, _______, 	_______, _______, BASELAY
+									_______, 		_______, _______, _______, _______, 			_______, _______, 	_______, _______, TO(_BASE)
 	),
 };
 
