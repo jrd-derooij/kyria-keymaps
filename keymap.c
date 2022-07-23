@@ -10,35 +10,43 @@ enum layers {
 };
  
 #define SYMBOLSTT 	TT(_SYMBOLS)
-#define SYMBOLS 	TO(_SYMBOLS)
+#define SYMBOLS     MO(_SYMBOLS)
 #define NMBRS 	    TO(_NUMBERS)
 #define BASELAY 	TO(_BASE)
 #define FUNCS 	    TO(_FUNCTION)
-#define NAV 	    TO(_NAVIGATION)
+#define NAV 	    MO(_NAVIGATION)
 #define ADJUST 	    TO(_RGB)
 
-#define CTL_ESC  MT(MOD_LCTL, KC_ESC)
-#define KC_UNDSC LSFT(KC_MINUS)
+#define CTL_ESC     MT(MOD_LCTL, KC_ESC)
+#define KC_UNDSC    LSFT(KC_MINUS)
+#define LSFT_NMBRS  MT(MOD_LSFT, NMBRS)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	[_BASE] = LAYOUT(
 		KC_TAB  , KC_Q, KC_W, KC_E, KC_R, KC_T,                                               KC_Y, KC_U, KC_I, KC_O, KC_P, KC_BSLS, 
 	 	CTL_ESC, KC_A, KC_S, KC_D, KC_F, KC_G,                                              KC_H, KC_J, KC_K, KC_L, KC_SCLN, KC_QUOT, 
-		KC_LSFT, KC_Z, KC_X, KC_C, KC_V, KC_B, KC_SPC, KC_LSFT,         KC_BSPC, SYMBOLS, KC_N, KC_M, KC_COMM, KC_DOT, KC_SLSH, KC_RSFT, 
-	 	            KC_LCTL, KC_LALT, KC_LGUI, 	KC_SPC, KC_LSFT,        KC_BSPC, SYMBOLS, KC_LCTL, KC_LALT, KC_NO
+		KC_LSFT, KC_Z, KC_X, KC_C, KC_V, KC_B, KC_SPC, NAV,         KC_BSPC, SYMBOLS, KC_N, KC_M, KC_COMM, KC_DOT, KC_SLSH, KC_RSFT, 
+	 	            KC_LCTL, KC_LALT, KC_LGUI, 	KC_SPC, NAV,        KC_BSPC, SYMBOLS, KC_LCTL, KC_LALT, KC_NO
 	),
 	[_SYMBOLS] = LAYOUT(
-		_______, KC_1, KC_2, KC_3, KC_4, _______, 									 	  			  	  	_______, KC_LCBR, KC_RCBR, 	_______, KC_DEL, _______, 
-		_______, KC_5, KC_6, KC_7, KC_8, KC_EQL, 								 	  			  	  		KC_MINS, KC_LPRN, KC_RPRN, 	_______, KC_ENT, _______, 
-		_______, KC_9, KC_0, _______, _______, KC_GRV, BASELAY, FUNCS, 		            _______, NMBRS, KC_UNDSC, KC_LBRC, KC_RBRC, 	_______, NAV, _______, 
-							_______, _______, _______, BASELAY, FUNCS, 	    _______, NMBRS, _______, _______, ADJUST
+		_______, KC_1, KC_2, KC_3, KC_4, _______, 									 	  			  	KC_EQL, KC_LCBR, KC_RCBR, 	_______, KC_DEL, _______, 
+		_______, KC_5, KC_6, KC_7, KC_8, KC_EQL, 								 	  			  	  	KC_MINS, KC_LPRN, KC_RPRN, 	_______, KC_ENT, _______, 
+		LSFT_NMBRS, KC_9, KC_0, _______, _______, KC_GRV, _______, FUNCS, 		            _______, _______, KC_UNDSC, KC_LBRC, KC_RBRC, 	_______, NAV, _______, 
+							_______, _______, _______, _______, FUNCS, 	                _______, _______, _______, _______, ADJUST
 	),
-	[_NAVIGATION] = LAYOUT(
-		_______, _______, _______, KC_UP, 	_______, _______, 												KC_PGUP, _______, KC_MS_U, _______, _______, _______, 
-		_______, KC_HOME, KC_LEFT, KC_DOWN, KC_RGHT, KC_END, 												KC_PGDN, KC_MS_L, KC_MS_D, KC_MS_R, _______, _______, 
-		_______, _______, KC_MUTE, KC_VOLD, KC_VOLU, _______, BASELAY, _______, 		  _______, _______, _______, KC_BTN1, _______, KC_BTN2, _______, _______, 
-								   _______, _______, _______, BASELAY, _______, 		  _______, _______, _______, _______, _______
-	),
+	// [_NAVIGATION] = LAYOUT(
+	// 	_______, _______, KC_HOME, KC_UP, 	KC_END, KC_PGUP, 												_______, _______, _______, _______, KC_DEL, _______, 
+	// 	_______, _______, KC_LEFT, KC_DOWN, KC_RGHT, KC_PGDN, 												_______, KC_RSFT, KC_LCTL, KC_LALT, KC_ENT, KC_INS, 
+	// 	_______, _______, KC_MUTE, KC_VOLD, KC_VOLU, KC_SLCK, _______, _______, 		  _______, _______, _______, _______, _______, _______, _______, KC_PSCR, 
+	// 							   _______, _______, _______, _______, _______, 		  _______, _______, _______, _______, _______
+	// ),
+    [_NAVIGATION] = LAYOUT(
+      _______, _______, _______, _______, _______, _______,                                     KC_PGUP, KC_HOME, KC_UP,   KC_END,  _______, _______,
+      _______, KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, _______,                                     KC_PGDN, KC_LEFT, KC_DOWN, KC_RGHT, KC_ENT, KC_INS,
+      _______, _______, _______, _______, _______, KC_SLCK, _______, _______, _______, _______,KC_PAUSE, KC_MPLY, KC_VOLD, KC_VOLU, KC_MUTE, KC_PSCR,
+                                 _______, _______, _______, _______, _______, _______, _______, _______, _______, _______
+    ),
+   
 	[_NUMBERS] = LAYOUT(
 		_______, _______, _______, KC_UP, 	_______, _______, 															KC_DOT, 		KC_7, 		KC_8, 		KC_9, 		KC_MINS, 	KC_ASTR, 
 		_______, KC_HOME, KC_LEFT, KC_DOWN, KC_RGHT, KC_END, 															KC_COMM, 		KC_4, 		KC_5, 		KC_6, 		KC_ENT, 	KC_PLUS, 
@@ -60,16 +68,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 };
 
 const key_override_t delete_key_override = ko_make_basic(MOD_MASK_SHIFT, KC_BSPC, KC_DEL);
-const key_override_t space_enter_override = ko_make_basic(MOD_MASK_SHIFT, KC_SPC, KC_ENT);
 
 // This globally defines all key overrides to be used
 const key_override_t **key_overrides = (const key_override_t *[]){
 	&delete_key_override,
-    &space_enter_override,
 	NULL // Null terminate the array of overrides!
 };
 
-#ifdef OLED_ENABLES
+#ifdef OLED_ENABLE 
 oled_rotation_t oled_init_user(oled_rotation_t rotation) { return OLED_ROTATION_180; }
 
 bool oled_task_user(void) {
