@@ -11,38 +11,75 @@ enum layers {
 
 #define CTL_ESC     MT(MOD_LCTL, KC_ESC)
 #define KC_UNDSC    LSFT(KC_MINUS)
-#define LSFT_NMBRS  MT(MOD_LSFT, TO(_NUMBERS))
+#define SPC_MEH     MT(MOD_MEH, KC_SPC)
+
+enum combos {
+    SPCSYM_NAV,
+};
+
+const uint16_t PROGMEM spcsym_combo[] = {LT(_NAVIGATION, KC_SPC), MO(_SYMBOLS), COMBO_END}
+
+combo_t key_combos[COMBO_COUNT] = {
+    [SPCSYM_NAV] = COMBO(spcsym_combo, MO(_NUMBERS)),
+};
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
+    /*
+    * Base Layer: QWERTY
+    *
+    * ,-------------------------------------------.                              ,-------------------------------------------.
+    * | TAB    |   Q  |   W  |   E  |   R  |   T  |                              |   Y  |   U  |   I  |   O  |   P  |  | \   |
+    * |--------+------+------+------+------+------|                              |------+------+------+------+------+--------|
+    * | CTL/ESC|   A  |   S  |  D   |   F  |   G  |                              |   H  |   J  |   K  |   L  | ;  : |  ' "   |
+    * |--------+------+------+------+------+------+-------------.  ,-------------+------+------+------+------+------+--------|
+    * | LSFT   |   Z  |   X  |   C  |   V  |   B  |      |      |  |      |      |   N  |   M  | ,  < | . >  | /  ? |  - _   |
+    * `----------------------+------+------+------+      +      |  |      +      +------+------+------+----------------------'
+    *                        | CTRL | ALT  | GUI  | Space| MEH  |  | Bspc | Symb | CTRL | ALT  | NMBRS|
+    *                        |      |      |      | NAV  |      |  |      |      |      |      |      |
+    *                        `----------------------------------'  `----------------------------------'
+    */
 	[_BASE] = LAYOUT(
-		KC_TAB  , KC_Q, KC_W, KC_E, KC_R, KC_T,                                               KC_Y, KC_U, KC_I, KC_O, KC_P, KC_BSLS, 
-	 	CTL_ESC, KC_A, KC_S, KC_D, KC_F, KC_G,                                              KC_H, KC_J, KC_K, KC_L, KC_SCLN, KC_QUOT, 
-		KC_LSFT, KC_Z, KC_X, KC_C, KC_V, KC_B, KC_SPC, MO(_NAVIGATION),         KC_BSPC, MO(_SYMBOLS), KC_N, KC_M, KC_COMM, KC_DOT, KC_SLSH, KC_RSFT, 
-	 	            KC_LCTL, KC_LALT, KC_LGUI, 	KC_SPC, MO(_NAVIGATION),        KC_BSPC, MO(_SYMBOLS), KC_LCTL, KC_LALT, TO(_NUMBERS)
+		KC_TAB,  KC_Q, KC_W, KC_E, KC_R, KC_T,                                                     KC_Y, KC_U, KC_I, KC_O, KC_P, KC_BSLS, 
+	 	CTL_ESC, KC_A, KC_S, KC_D, KC_F, KC_G,                                                     KC_H, KC_J, KC_K, KC_L, KC_SCLN, KC_QUOT, 
+		KC_LSFT, KC_Z, KC_X, KC_C, KC_V, KC_B, XXXXXXX, XXXXXXX,            XXXXXXX, XXXXXXX,      KC_N, KC_M, KC_COMM, KC_DOT, KC_SLSH, KC_MINS, 
+	 	        KC_LCTL, KC_LALT, KC_LGUI, LT(_NAVIGATION, KC_SPC), KC_MEH,       KC_BSPC, MO(_SYMBOLS), KC_LCTL, KC_LALT, TO(_NUMBERS)
 	),
 	[_SYMBOLS] = LAYOUT(
-		_______, KC_1, KC_2, KC_3, KC_4, _______, 									 	  			  	KC_EQL, KC_LCBR, KC_RCBR, 	_______, KC_DEL, _______, 
-		_______, KC_5, KC_6, KC_7, KC_8, KC_EQL, 								 	  			  	  	KC_MINS, KC_LPRN, KC_RPRN, 	_______, KC_ENT, _______, 
-		_______, KC_9, KC_0, _______, _______, KC_GRV, _______, TG(_FUNCTION), 		            _______, _______, KC_UNDSC, KC_LBRC, KC_RBRC, 	_______, _______, TO(_NUMBERS), 
-							_______, _______, _______, _______, TG(_FUNCTION), 	                _______, _______, _______, _______, TO(_RGB)
+		KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5, 									 	  			      KC_6,    KC_7,    KC_8,    KC_9,    KC_0,   _______, 
+		_______, KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC,								 	  			      KC_LBRC, KC_LPRN, KC_RPRN, KC_RBRC, KC_ENT, _______, 
+		_______, KC_CIRC, KC_AMPR, KC_ASTR, KC_PLUS, KC_EQL,  _______, _______, 		        _______, _______, KC_UNDSC,KC_LCBR, KC_RCBR, KC_RCBR, _______, _______, 
+						           _______, _______, _______, _______, TG(_FUNCTION), 	        _______, _______, _______, _______, TO(_RGB)
 	),
     [_NAVIGATION] = LAYOUT(
-      _______, _______, _______, _______, _______, _______,                                     KC_PGUP, KC_HOME, KC_UP,   KC_END,  _______, _______,
-      _______, KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, _______,                                     KC_PGDN, KC_LEFT, KC_DOWN, KC_RGHT, KC_ENT, KC_INS,
-      _______, _______, _______, _______, _______, KC_SLCK, _______, _______, _______, _______,KC_PAUSE, KC_MPLY, KC_VOLD, KC_VOLU, KC_MUTE, KC_PSCR,
-                                 _______, _______, _______, _______, _______, _______, _______, _______, _______, _______
+      _______, _______, _______, _______, _______, _______,                                              KC_PGUP, KC_HOME, KC_UP,   KC_END,  _______, _______,
+      _______, KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, _______,                                              KC_PGDN, KC_LEFT, KC_DOWN, KC_RGHT, KC_ENT, KC_INS,
+      _______, _______, _______, _______, _______, KC_SLCK, _______, _______,           _______, _______,KC_PAUSE, KC_MPLY, KC_VOLD, KC_VOLU, KC_MUTE, KC_PSCR,
+                                 _______, _______, _______, _______, _______,           _______, _______, _______, _______, _______
     ),
+     /* Lower Layer: Numpad, Media
+    *
+    * ,-------------------------------------------.                              ,-------------------------------------------.
+    * |        |      |      | VolUp|      |      |                              | / ?  | 7 &  | 8 *  | 9 (  | - _  |        |
+    * |--------+------+------+------+------+------|                              |------+------+------+------+------+--------|
+    * |        |      | Prev | Play | Next |      |                              | *    | 4 $  | 5 %  | 6 ^  | , <  | +      |
+    * |--------+------+------+------+------+------+-------------.  ,-------------+------+------+------+------+------+--------|
+    * |        |      |      | VolDn| Mute |      |      |      |  |      |      | 0 )  | 1 !  | 2 @  | 3 #  | = +  |        |
+    * `----------------------+------+------+------+------+------|  |------+------+------+------+------+----------------------'
+    *                        |      |      |      |      |      |  |      |      |      |      |      |
+    *                        |      |      | Lower|      |      |  |      | Nav  | Raise|      |      |
+    *                        `----------------------------------'  `----------------------------------'
+    */
 	[_NUMBERS] = LAYOUT(
-		_______, _______, _______, KC_UP, 	_______, _______, 															KC_DOT, 		KC_7, 		KC_8, 		KC_9, 		KC_MINS, 	KC_ASTR, 
-		_______, KC_HOME, KC_LEFT, KC_DOWN, KC_RGHT, KC_END, 															KC_COMM, 		KC_4, 		KC_5, 		KC_6, 		KC_ENT, 	KC_PLUS, 
-		_______, _______, _______, _______, _______, _______, TO(_BASE), _______, 			_______, 	TO(_SYMBOLS), 	KC_0, 			KC_1, 		KC_2, 		KC_3, 		KC_SLSH, 	_______,
+		_______, _______, _______, KC_UP, 	_______, _______, 														KC_DOT, 		KC_7, 		KC_8, 		KC_9, 		KC_MINS, 	KC_ASTR, 
+		_______, KC_HOME, KC_LEFT, KC_DOWN, KC_RGHT, KC_END, 														KC_COMM, 		KC_4, 		KC_5, 		KC_6, 		KC_ENT, 	KC_PLUS, 
+		_______, _______, _______, _______, _______, _______, _______, _______, 			_______, 	_______, 	KC_0, 			KC_1, 		KC_2, 		KC_3, 		KC_SLSH, 	_______,
 								   _______, _______, _______, TO(_BASE), _______, 			_______,    TO(_SYMBOLS), 	_______, 	_______, 	_______
 	),
 	[_FUNCTION] = LAYOUT(
-		_______, KC_F9, KC_F10, KC_F11, 	KC_F12, 	_______, 														_______, _______, _______, _______, _______, _______, 
-		_______, KC_F5, KC_F6,	KC_F7, 		KC_F8, 		_______, 														_______, KC_RSFT, KC_LCTL, KC_LALT, KC_LGUI, _______, 
-		_______, KC_F1, KC_F2, 	KC_F3, 		KC_F4, 		_______, TO(_BASE), _______, 				  _______, _______, _______, _______, _______, _______, _______, _______, 
-						   		_______, 	_______, 	_______, TO(_BASE), _______, 				  _______, _______, _______, _______, TO(_BASE)
+		_______, _______, _______, _______, _______, _______, 														    _______, KC_F9, KC_F10, KC_F11, KC_F12,  _______, 
+		_______, KC_RSFT, KC_LCTL, KC_LALT, KC_LGUI, _______,														    _______, KC_F5, KC_F6,	KC_F7,  KC_F8,   _______,  
+		_______, _______, _______, _______, _______, _______, _______, _______, 				      _______, _______, _______, KC_F1, KC_F2, 	KC_F3,  KC_F4,   _______, 
+						   		   _______, _______, _______, TO(_BASE), _______, 				      _______, _______, _______, _______, TO(_BASE)
 	),
 	[_RGB] = LAYOUT(
 		_______, _______, _______, 	DF(_BASE), 		_______, _______, 													_______, _______, _______, _______, _______, 	_______, 
@@ -74,7 +111,7 @@ bool oled_task_user(void) {
         // clang-format on
 
         oled_write_P(qmk_logo, false);
-        oled_write_P(PSTR(" Kyria\n\n"), false);
+        oled_write_P(PSTR(" Jordy\n\n"), false);
 
         // Host Keyboard Layer Status
         oled_write_P(PSTR("Layer: "), false);
@@ -97,12 +134,6 @@ bool oled_task_user(void) {
             default:
                 oled_write_P(PSTR("Undefined\n"), false);
         }
-
-        // Write host Keyboard LED Status to OLEDs
-        led_t led_usb_state = host_keyboard_led_state();
-        oled_write_P(led_usb_state.num_lock    ? PSTR("NUMLCK ") : PSTR("       "), false);
-        oled_write_P(led_usb_state.caps_lock   ? PSTR("CAPLCK ") : PSTR("       "), false);
-        oled_write_P(led_usb_state.scroll_lock ? PSTR("SCRLCK ") : PSTR("       "), false);
     } else {
         // clang-format off
         static const char PROGMEM kyria_logo[] = {
