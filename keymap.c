@@ -1,5 +1,9 @@
 #include QMK_KEYBOARD_H
 
+#ifdef CONSOLE_ENABLE
+#include "print.h"
+#endif
+
 enum layers {
 	_BASE = 0,
     _COLEMAK_DH,
@@ -44,13 +48,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 		KC_TAB,  KC_Q, KC_W, KC_E, KC_R, KC_T,                                                     KC_Y, KC_U, KC_I, KC_O, KC_P, KC_BSLS, 
 	 	CTL_ESC, KC_A, KC_S, KC_D, KC_F, KC_G,                                                     KC_H, KC_J, KC_K, KC_L, KC_SCLN, KC_QUOT, 
 		KC_LSFT, KC_Z, KC_X, KC_C, KC_V, KC_B, XXXXXXX, XXXXXXX,            XXXXXXX, XXXXXXX,      KC_N, KC_M, KC_COMM, KC_DOT, KC_SLSH, KC_MINS, 
-	 	        KC_LCTL, KC_LALT, KC_LGUI, LT(_NAVIGATION, KC_SPC), KC_MEH,       KC_BSPC, MO(_SYMBOLS), KC_LCTL, KC_LALT, TO(_NUMBERS)
+	 	        KC_LCTL, KC_LALT, KC_LGUI, SPC_MEH, MO(_NAVIGATION),       KC_BSPC, MO(_SYMBOLS), KC_LCTL, KC_LALT, TO(_NUMBERS)
 	),
     [_COLEMAK_DH] = LAYOUT(
      KC_TAB  , KC_Q ,  KC_W   ,  KC_F  ,   KC_P ,   KC_B ,                                        KC_J,   KC_L ,  KC_U ,   KC_Y ,KC_SCLN, KC_BSLS,
      CTL_ESC , KC_A ,  KC_R   ,  KC_S  ,   KC_T ,   KC_G ,                                        KC_M,   KC_N ,  KC_E ,   KC_I ,  KC_O , KC_QUOT,
      KC_LSFT , KC_Z ,  KC_X   ,  KC_C  ,   KC_D ,   KC_V , XXXXXXX,XXXXXXX,     XXXXXXX  , XXXXXXX, KC_K,   KC_H ,KC_COMM, KC_DOT ,KC_SLSH, KC_MINS,
-	 	        KC_LCTL, KC_LALT, KC_LGUI, LT(_NAVIGATION, KC_SPC), KC_MEH,       KC_BSPC, MO(_SYMBOLS), KC_LCTL, KC_LALT, TO(_NUMBERS)
+	 	        KC_LCTL, KC_LALT, KC_LGUI, SPC_MEH, MO(_NAVIGATION),       KC_BSPC, MO(_SYMBOLS), KC_LCTL, KC_LALT, TO(_NUMBERS)
     ),
 
 	[_SYMBOLS] = LAYOUT(
@@ -81,8 +85,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	[_NUMBERS] = LAYOUT(
 		_______, _______, _______, KC_UP, 	_______, _______, 														KC_DOT, 		KC_7, 		KC_8, 		KC_9, 		KC_MINS, 	KC_ASTR, 
 		_______, KC_HOME, KC_LEFT, KC_DOWN, KC_RGHT, KC_END, 														KC_COMM, 		KC_4, 		KC_5, 		KC_6, 		KC_ENT, 	KC_PLUS, 
-		_______, _______, _______, _______, _______, _______, _______, _______, 			_______, 	_______, 	KC_0, 			KC_1, 		KC_2, 		KC_3, 		KC_SLSH, 	_______,
-								   _______, _______, _______, TO(_BASE), _______, 			_______,    TO(_SYMBOLS), 	_______, 	_______, 	_______
+		_______, _______, _______, _______, _______, _______, _______, _______, 			_______, 	_______, 	KC_EQL, 			KC_1, 		KC_2, 		KC_3, 		KC_SLSH, 	_______,
+								   _______, _______, _______, TO(_BASE), _______, 			_______,    KC_0, 	_______, 	KC_DOT, 	_______
 	),
 	[_FUNCTION] = LAYOUT(
 		_______, _______, _______, _______, _______, _______, 														    _______, KC_F9, KC_F10, KC_F11, KC_F12,  _______, 
@@ -106,6 +110,26 @@ const key_override_t **key_overrides = (const key_override_t *[]){
 	&delete_key_override,
 	NULL // Null terminate the array of overrides!
 };
+
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    #ifdef CONSOLE_ENABLE
+        uprintf("0x%04X,%u,%u,%u,%b,0x%02X,0x%02X,%u\n",
+             keycode,
+             record->event.key.row,
+             record->event.key.col,
+             get_highest_layer(layer_state),
+             record->event.pressed,
+             get_mods(),
+             get_oneshot_mods(),
+             record->tap.count
+             );
+    #endif
+    switch (keycode) {
+    //...
+    }
+    return true;
+}
+
 
 #ifdef OLED_ENABLE 
 oled_rotation_t oled_init_user(oled_rotation_t rotation) { return OLED_ROTATION_180; }
