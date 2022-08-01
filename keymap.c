@@ -23,7 +23,7 @@ enum combos {
     SPCSYM_NAV,
 };
 
-const uint16_t PROGMEM spcsym_combo[] = {LT(_NAVIGATION, KC_SPC), MO(_SYMBOLS), COMBO_END};
+const uint16_t PROGMEM spcsym_combo[] = {SPC_MEH, MO(_SYMBOLS), COMBO_END};
 
 combo_t key_combos[COMBO_COUNT] = {
     [SPCSYM_NAV] = COMBO(spcsym_combo, MO(_NUMBERS)),
