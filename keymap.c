@@ -21,7 +21,7 @@ enum layers {
 
 enum combos {
     SPCSYM_NAV,
-};
+}; 
 
 const uint16_t PROGMEM spcsym_combo[] = {SPC_MEH, MO(_SYMBOLS), COMBO_END};
 
@@ -46,7 +46,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     */
 	[_BASE] = LAYOUT(
 		KC_TAB,  KC_Q, KC_W, KC_E, KC_R, KC_T,                                                     KC_Y, KC_U, KC_I, KC_O, KC_P, KC_BSLS, 
-	 	CTL_ESC, KC_A, KC_S, KC_D, KC_F, KC_G,                                                     KC_H, KC_J, KC_K, KC_L, KC_SCLN, KC_QUOT, 
+	 	CTL_ESC, KC_A, LALT_T(KC_S), LSFT_T(KC_D), LCTL_T(KC_F), KC_G,                                                     KC_H, MT(MOD_RCTL, KC_J), MT(MOD_RSFT, KC_K), MT(MOD_LALT, KC_L), KC_SCLN, KC_QUOT, 
 		KC_LSFT, KC_Z, KC_X, KC_C, KC_V, KC_B, XXXXXXX, XXXXXXX,            XXXXXXX, XXXXXXX,      KC_N, KC_M, KC_COMM, KC_DOT, KC_SLSH, KC_MINS, 
 	 	        KC_LCTL, KC_LALT, KC_LGUI, SPC_MEH, MO(_NAVIGATION),       KC_BSPC, MO(_SYMBOLS), KC_LCTL, KC_LALT, TO(_NUMBERS)
 	),
@@ -60,7 +60,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     * |--------+------+------+------+------+------+-------------.  ,-------------+------+------+------+------+------+--------|
     * | LSFT   |   Z  |   X  |   C  |   V  |   B  |      |      |  |      |      |   N  |   M  | ,  < | . >  | /  ? |  - _   |
     * `----------------------+------+------+------+      +      |  |      +      +------+------+------+----------------------'
-    *                        | CTRL | ALT  | GUI  | Space| MEH  |  | Bspc | Symb | CTRL | ALT  | NMBRS|
+    *                        | CTRL | ALT  | GUI  | Space| MEH  |  | Bspc | Symb | CTRL | ALT  | NMBRS|  
     *                        |      |      |      | NAV  |      |  |      |      |      |      |      |
     *                        `----------------------------------'  `----------------------------------'
     */
