@@ -11,7 +11,8 @@ enum layers {
 	_NAVIGATION,
 	_NUMBERS,
 	_FUNCTION,
-    _RGB
+    _RGB,
+    _GAMING
 };
 
 #define CTL_ESC     MT(MOD_LCTL, KC_ESC)
