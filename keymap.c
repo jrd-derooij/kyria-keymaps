@@ -27,7 +27,7 @@ enum combos {
 }; 
 
 const uint16_t PROGMEM spcsym_combo[] = {SPC_NAV, MO(_SYMBOLS), COMBO_END};
-const uint16_t PROGMEM underscr_combo[] = {KC_COMM, KC_DOTT, COMBO_END};
+const uint16_t PROGMEM underscr_combo[] = {KC_COMM, KC_DOT, COMBO_END};
 
 combo_t key_combos[COMBO_COUNT] = {
     [SPCSYM_NAV] = COMBO(spcsym_combo, MO(_NUMBERS)),
