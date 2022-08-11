@@ -7,7 +7,7 @@
 #define SPC_NAV     LT(_NAVIGATION, KC_SPC)
 
 // Layer Keys
-#define BASE        DF(_BASE)
+#define BASE        TO(_BASE)
 #define COLEMAK     TO(_COLEMAK_DH)
 #define SYMB        MO(_SYMBOLS)
 #define NAVI        MO(_NAVIGATION)
