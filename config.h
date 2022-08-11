@@ -5,7 +5,7 @@
  * the Free Software Foundation, either version 2 of the License, or
  * (at your option) any later version.
  *
- * This program is distributed in the hope that it will be useful,
+ * This program is distributed in the hope that it will be useful, 00 
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
@@ -20,6 +20,6 @@
 #define IGNORE_MOD_TAP_INTERRUPT
 
 #define COMBO_COUNT 2
-#define COMBO_TERM 100
+#define COMBO_TERM 70
 
 #define DOUBLE_TAP_SHIFT_TURNS_ON_CAPS_WORD
