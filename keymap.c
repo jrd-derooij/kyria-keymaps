@@ -18,13 +18,14 @@ enum layers {
 #define CTL_ESC     MT(MOD_LCTL, KC_ESC)
 #define KC_UNDSC    LSFT(KC_MINUS)
 #define SPC_MEH     MT(MOD_MEH, KC_SPC)
+#define SPC_NAV     MT(MO(_NAVIGATION), KC_SPC)
 
 
 enum combos {
     SPCSYM_NAV,
 }; 
 
-const uint16_t PROGMEM spcsym_combo[] = {SPC_MEH, MO(_SYMBOLS), COMBO_END};
+const uint16_t PROGMEM spcsym_combo[] = {SPC_NAV, MO(_SYMBOLS), COMBO_END};
 
 combo_t key_combos[COMBO_COUNT] = {
     [SPCSYM_NAV] = COMBO(spcsym_combo, MO(_NUMBERS)),
@@ -49,7 +50,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 		KC_TAB,  KC_Q, KC_W, KC_E, KC_R, KC_T,                                                     KC_Y, KC_U, KC_I, KC_O, KC_P, KC_BSLS, 
 	 	CTL_ESC, KC_A, LALT_T(KC_S), LCTL_T(KC_D), LSFT_T(KC_F), KC_G,                                                     KC_H, RSFT_T(KC_J), RCTL_T(KC_K), LALT_T(KC_L), KC_SCLN, KC_QUOT, 
 		KC_LSFT, KC_Z, KC_X, KC_C, KC_V, KC_B, XXXXXXX, XXXXXXX,            XXXXXXX, XXXXXXX,      KC_N, KC_M, KC_COMM, KC_DOT, KC_SLSH, KC_MINS, 
-	 	        KC_LCTL, KC_LALT, KC_LGUI, SPC_MEH, MO(_NAVIGATION),       KC_BSPC, MO(_SYMBOLS), KC_LCTL, KC_LALT, TO(_NUMBERS)
+	 	        KC_LCTL, KC_LALT, KC_LGUI, SPC_NAV, KC_MEH,       KC_BSPC, MO(_SYMBOLS), KC_LCTL, KC_LALT, TO(_NUMBERS)
 	),
     /*
     * Base Layer: COLEMAK
@@ -69,7 +70,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      KC_TAB  , KC_Q ,  KC_W   ,  KC_F  ,   KC_P ,   KC_G ,                                        KC_J,   KC_L ,  KC_U ,   KC_Y ,KC_SCLN, KC_BSLS,
      CTL_ESC , KC_A ,  LALT_T(KC_R),  LCTL_T(KC_S),   LSFT_T(KC_T) ,   KC_D ,                     KC_H,   RSFT_T(KC_N),  RCTL_T(KC_E),   LALT_T(KC_I),  KC_O , KC_QUOT,
      KC_LSFT , KC_Z ,  KC_X   ,  KC_C  ,   KC_V ,   KC_B , XXXXXXX,XXXXXXX,     XXXXXXX  , XXXXXXX, KC_K,   KC_M ,KC_COMM, KC_DOT ,KC_SLSH, KC_MINS,
-	 	        KC_LCTL, KC_LALT, KC_LGUI, SPC_MEH, MO(_NAVIGATION),       KC_BSPC, MO(_SYMBOLS), KC_LCTL, KC_LALT, TO(_NUMBERS)
+	 	        KC_LCTL, KC_LALT, KC_LGUI, SPC_NAV, KC_MEH,       KC_BSPC, MO(_SYMBOLS), KC_LCTL, KC_LALT, TO(_NUMBERS)
     ),
 
 	[_SYMBOLS] = LAYOUT(
