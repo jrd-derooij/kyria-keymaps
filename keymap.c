@@ -23,7 +23,7 @@ enum layers {
 
 enum combos {
     SPCSYM_NAV,
-    COMMDOT_USC
+    COMMDOT_USC,
 };
 
 const uint16_t PROGMEM spcsym_combo[] = {SPC_NAV, MO(_SYMBOLS), COMBO_END};
