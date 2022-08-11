@@ -11,10 +11,6 @@ enum layers {
     _GAMING
 };
 
-#ifdef CONSOLE_ENABLE
-#include "print.h"
-#endif
-
 #include "custom_keycodes.c" 
 
 enum combos {
