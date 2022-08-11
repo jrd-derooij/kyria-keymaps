@@ -18,7 +18,7 @@ enum layers {
 #define CTL_ESC     MT(MOD_LCTL, KC_ESC)
 #define KC_UNDSC    LSFT(KC_MINUS)
 #define SPC_MEH     MT(MOD_MEH, KC_SPC)
-#define SPC_NAV     MT(MO(_NAVIGATION), KC_SPC)
+#define SPC_NAV     LT(_NAVIGATION, KC_SPC)
 
 
 enum combos {
