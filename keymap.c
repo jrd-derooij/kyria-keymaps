@@ -29,7 +29,11 @@ enum layers {
 
 uint16_t get_combo_term(uint16_t index, combo_t *combo) {
     switch (index) {
+    // SHORT TERMS
+
+    // LONG TERMS
         case SPCNAV_NUMB:
+        case ENV_ENVIRONM:
             return COMBO_TERM + 50;
     }
     return COMBO_TERM;
