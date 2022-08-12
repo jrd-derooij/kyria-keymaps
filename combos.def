@@ -2,4 +2,3 @@
 COMB(SPCNAV_NUMB,   MO(_NUMBERS),       SPC_NAV,    MO(_SYMBOLS))
 COMB(DOTCOM_USC,    KC_UNDS,            KC_COMM,    KC_DOT)
 COMB(MCOMM_EQ,      KC_EQL,             KC_M,       KC_COMM)
-SUBS(ENV_ENVIRONM,  "environment",      KC_E,   KC_N,   KC_V)
