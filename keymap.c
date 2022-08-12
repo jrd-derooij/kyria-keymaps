@@ -162,7 +162,7 @@ void matrix_scan_user(void) {
         SEND_STRING("environment");
     }
     SEQ_THREE_KEYS(KC_M, KC_V, KC_G) {
-        SEND_STRING("Met vriendelijke groet,\nJordy de Rooij")
+        SEND_STRING("Met vriendelijke groet,\nJordy de Rooij");
     }
     }
 }
