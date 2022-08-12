@@ -19,7 +19,8 @@
 // Lets you roll mod-tap keys
 #define IGNORE_MOD_TAP_INTERRUPT
 
-#define COMBO_COUNT 2
-#define COMBO_TERM 50
+#define COMBO_VARIABLE_LEN
+#define COMBO_TERM 20
+#define COMBO_TERM_PER_COMBO
 
 #define DOUBLE_TAP_SHIFT_TURNS_ON_CAPS_WORD

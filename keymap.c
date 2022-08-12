@@ -11,20 +11,29 @@ enum layers {
     _GAMING
 };
 
-#include "custom_keycodes.c" 
+#include "custom_keycodes.c"
+#include "g/keymap_combo.h"
 
-enum combos {
-    SPCSYM_NAV,
-    COMMDOT_USC,
-};
+// enum combos {
+//     SPCSYM_NAV,
+//     COMMDOT_USC,
+// };
 
-const uint16_t PROGMEM spcsym_combo[] = {SPC_NAV, MO(_SYMBOLS), COMBO_END};
-const uint16_t PROGMEM underscr_combo[] = {KC_COMM, KC_DOT, COMBO_END};
+// const uint16_t PROGMEM spcsym_combo[] = {SPC_NAV, MO(_SYMBOLS), COMBO_END};
+// const uint16_t PROGMEM underscr_combo[] = {KC_COMM, KC_DOT, COMBO_END};
 
-combo_t key_combos[COMBO_COUNT] = {
-    [SPCSYM_NAV] = COMBO(spcsym_combo, MO(_NUMBERS)),
-    [COMMDOT_USC] = COMBO(underscr_combo, KC_UNDSC),
-};
+// combo_t key_combos[COMBO_COUNT] = {
+//     [SPCSYM_NAV] = COMBO(spcsym_combo, MO(_NUMBERS)),
+//     [COMMDOT_USC] = COMBO(underscr_combo, KC_UNDSC),
+// };
+
+uint16_t get_combo_term(uint16_t index, combo_t *combo) {
+    switch (index) {
+        case SPCNAV_NUMB:
+            return COMBO_TERM + 50;
+    }
+    return COMBO_TERM;
+}
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     /*
@@ -37,7 +46,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     * |--------+------+------+------+------+------+-------------.  ,-------------+------+------+------+------+------+--------|
     * | LSFT   |   Z  |   X  |   C  |   V  |   B  |      |      |  |      |      |   N  |   M  | ,  < | . >  | /  ? |  - _   |
     * `----------------------+------+------+------+      +      |  |      +      +------+------+------+----------------------'
-    *                        | CTRL | ALT  | GUI  | Space| NAV  |  | Bspc | Symb | CTRL | ALT  | NMBRS|  
+    *                        | CTRL | ALT  | GUI  | Space| NAV  |  | Bspc | Symb | FUNC | ALT  | NMBRS|  
     *                        |      |      |      | MEH  |      |  |      |      |      |      |      |
     *                        `----------------------------------'  `----------------------------------'
     */
