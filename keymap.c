@@ -36,7 +36,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     * |--------+------+------+------+------+------+-------------.  ,-------------+------+------+------+------+------+--------|
     * | LSFT   |   Z  |   X  |   C  |   V  |   B  |      |      |  |      |      |   N  |   M  | ,  < | . >  | /  ? |  - _   |
     * `----------------------+------+------+------+      +      |  |      +      +------+------+------+----------------------'
-    *                        | CTRL | ALT  | GUI  | Space| NAV  |  | Bspc | Symb | FUNC | ALT  | NMBRS|  
+    *                        | CTRL | ALT  | GUI  | Space| LEAD |  | Bspc | Symb | FUNC | MEH  | NMBRS|  
     *                        |      |      |      | MEH  |      |  |      |      |      |      |      |
     *                        `----------------------------------'  `----------------------------------'
     */
@@ -44,7 +44,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 		KC_TAB,  KC_Q, KC_W, KC_E, KC_R, KC_T,                                                     KC_Y, KC_U, KC_I, KC_O, KC_P, KC_BSLS, 
 	 	CTL_ESC, KC_A, LALT_T(KC_S), LCTL_T(KC_D), LSFT_T(KC_F), KC_G,                             KC_H, RSFT_T(KC_J), RCTL_T(KC_K), LALT_T(KC_L), KC_SCLN, KC_QUOT, 
 		KC_LSFT, KC_Z, KC_X, KC_C, KC_V, KC_B, XXXXXXX, XXXXXXX,            XXXXXXX, XXXXXXX,      KC_N, KC_M, KC_COMM, KC_DOT, KC_SLSH, KC_MINS, 
-	 	        KC_LCTL, KC_LALT, KC_LGUI, SPC_NAV, KC_MEH,                 KC_BSPC, SYMB, FUNC, KC_LALT, NUMBTO
+	 	        KC_LCTL, KC_LALT, KC_LGUI, SPC_NAV, KC_LEAD,                 KC_BSPC, SYMB, FUNC, KC_MEH, NUMBTO
 	),           
     /*
     * Base Layer: COLEMAK
@@ -143,6 +143,25 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     //...
     }
     return true;
+}
+
+LEADER_EXTERNS();
+
+void matrix_scan_user(void) {
+    LEADER_DICTIONARY() {
+    leading = false;
+    leader_end();
+    // Replace the sequences below with your own sequences.
+    SEQ_ONE_KEY(KC_T) {
+        // When I press KC_LEAD and then T, this sends CTRL + SHIFT + T
+        SEND_STRING(SS_LCTRL(SS_LSFT("t")));
+    }
+    // Note: This is not an array, you don't need to put any commas
+    // or semicolons between sequences.
+    SEQ_THREE_KEYS(KC_E, KC_N, KC_V) {
+        SEND_STRING("environment");
+    }
+    }
 }
 
 
