@@ -8,7 +8,8 @@ enum layers {
 	_NUMBERS,
 	_FUNCTION,
     _RGB,
-    _GAMING
+    _GAMING,
+    _STENO
 };
 
 #include "custom_keycodes.c"
@@ -76,7 +77,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 		KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5, 									 	  			      KC_6,    KC_7,    KC_8,    KC_9,    KC_0,   _______, 
 		_______, KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC,								 	  			      KC_LBRC, KC_LPRN, KC_RPRN, KC_RBRC, KC_ENT, _______, 
 		_______, KC_CIRC, KC_AMPR, KC_ASTR, KC_PLUS, KC_EQL,  _______, _______, 		        _______, _______, KC_UNDSC,KC_LCBR, KC_RCBR, KC_RCBR, _______, _______, 
-						           COLEMAK, _______, _______, _______, _______, 	        _______, _______, _______, _______, TO(_RGB)
+						           COLEMAK, TO(_STENO), _______, _______, _______, 	        _______, _______, _______, _______, TO(_RGB)
 	),
     [_NAVIGATION] = LAYOUT(
       _______, _______, _______, _______, _______, _______,                                              KC_PGUP, KC_HOME, KC_UP,   KC_END,  _______, _______,
@@ -123,8 +124,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
     // // ---- STENO ---- {{{
     [_STENO] = LAYOUT(
-    STENTAB, STN_N1,  STN_N2,  STN_N3,  STN_N4,  STN_N5,                                            STN_N6,  STN_N7,  STN_N8,  STN_N9,  STN_NA,  MEDIA,
-    STENESC, STN_S1,  STN_TL,  STN_PL,  STN_HL,  STN_ST1,                                           STN_ST3, STN_FR,  STN_PR,  STN_LR,  STN_TR,  STN_DR,
+    _______, STN_N1,  STN_N2,  STN_N3,  STN_N4,  STN_N5,                                            STN_N6,  STN_N7,  STN_N8,  STN_N9,  STN_NA,  ,
+    _______, STN_S1,  STN_TL,  STN_PL,  STN_HL,  STN_ST1,                                           STN_ST3, STN_FR,  STN_PR,  STN_LR,  STN_TR,  STN_DR,
     _______, STN_S2,  STN_KL,  STN_WL,  STN_RL,  STN_ST2, _______,     _______,       _______, _______, STN_ST4, STN_RR,  STN_BR,  STN_GR,  STN_SR,  STN_ZR,
                                 _______, _______,     STN_A,   STN_A,   STN_O, STN_N1,  STN_E,   STN_U,   _______, BASE
     )
