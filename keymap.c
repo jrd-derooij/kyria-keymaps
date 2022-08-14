@@ -114,14 +114,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 		_______, _______, KC_A, KC_S, KC_D, KC_F, 													_______, _______, _______, _______, _______, 	_______, 
 		_______, _______, KC_Z, KC_X, KC_C, KC_V, _______, _______, 		  	_______, _______, 	_______, _______, _______, _______, _______, 	_______, 
 									_______, _______, _______, _______, _______, 			_______, _______, 	_______, _______, BASE
-    ),
-    // ---- STENO ---- {{{
-    [_STENO] = LAYOUT(
-    STENTAB, STN_N1,  STN_N2,  STN_N3,  STN_N4,  STN_N5,                                            STN_N6,  STN_N7,  STN_N8,  STN_N9,  STN_NA,  MEDIA,
-    STENESC, STN_S1,  STN_TL,  STN_PL,  STN_HL,  STN_ST1,                                           STN_ST3, STN_FR,  STN_PR,  STN_LR,  STN_TR,  STN_DR,
-    _______, STN_S2,  STN_KL,  STN_WL,  STN_RL,  STN_ST2, _______,     _______,       _______, _______, STN_ST4, STN_RR,  STN_BR,  STN_GR,  STN_SR,  STN_ZR,
-                                _______, _______,     STN_A,   STN_A,   STN_O, STN_N1,  STN_E,   STN_U,   _______, BASE
     )
+    // // ---- STENO ---- {{{
+    // [_STENO] = LAYOUT(
+    // STENTAB, STN_N1,  STN_N2,  STN_N3,  STN_N4,  STN_N5,                                            STN_N6,  STN_N7,  STN_N8,  STN_N9,  STN_NA,  MEDIA,
+    // STENESC, STN_S1,  STN_TL,  STN_PL,  STN_HL,  STN_ST1,                                           STN_ST3, STN_FR,  STN_PR,  STN_LR,  STN_TR,  STN_DR,
+    // _______, STN_S2,  STN_KL,  STN_WL,  STN_RL,  STN_ST2, _______,     _______,       _______, _______, STN_ST4, STN_RR,  STN_BR,  STN_GR,  STN_SR,  STN_ZR,
+    //                             _______, _______,     STN_A,   STN_A,   STN_O, STN_N1,  STN_E,   STN_U,   _______, BASE
+    // )
 // ---- END STENO ---- }}}
 
 };
