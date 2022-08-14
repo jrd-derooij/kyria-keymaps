@@ -61,9 +61,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     *                        `----------------------------------'  `----------------------------------'
     */
     [_COLEMAK_DH] = LAYOUT(
-     KC_TAB  , KC_Q ,  KC_W   ,  KC_F  ,   KC_P ,   KC_G ,                                        KC_J,   KC_L ,  KC_U ,   KC_Y ,KC_SCLN, KC_BSLS,
-     CTL_ESC , KC_A ,  LALT_T(KC_R),  LCTL_T(KC_S),   LSFT_T(KC_T) ,   KC_D ,                     KC_H,   RSFT_T(KC_N),  RCTL_T(KC_E),   LALT_T(KC_I),  KC_O , KC_QUOT,
-     KC_LSFT , KC_Z ,  KC_X   ,  KC_C  ,   KC_V ,   KC_B , XXXXXXX,XXXXXXX,     XXXXXXX  , XXXXXXX, KC_K,   KC_M ,KC_COMM, KC_DOT ,KC_SLSH, KC_MINS,
+     KC_TAB  , KC_Q ,  KC_W   ,  KC_F  ,   KC_P ,   KC_B ,                                        KC_J,   KC_L ,  KC_U ,   KC_Y ,KC_SCLN, KC_BSLS,
+     CTL_ESC , KC_A ,  LALT_T(KC_R),  LCTL_T(KC_S),   LSFT_T(KC_T) ,   KC_G ,                     KC_M,   RSFT_T(KC_N),  RCTL_T(KC_E),   LALT_T(KC_I),  KC_O , KC_QUOT,
+     KC_LSFT , KC_Z ,  KC_X   ,  KC_C  ,   KC_D ,   KC_V , XXXXXXX,XXXXXXX,     XXXXXXX  , XXXXXXX, KC_K,   KC_H ,KC_COMM, KC_DOT ,KC_SLSH, KC_MINS,
 	 	        KC_LCTL, KC_LALT, KC_LGUI, SPC_NAV, KC_MEH,       KC_BSPC, SYMB, KC_LCTL, KC_LALT, NUMBTO
     ),
 	[_SYMBOLS] = LAYOUT(
