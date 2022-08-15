@@ -171,6 +171,9 @@ void matrix_scan_user(void) {
         // When I press KC_LEAD and then T, this sends CTRL + SHIFT + T
         SEND_STRING(SS_LCTRL(SS_LSFT("t")));
     }
+    SEQ_ONE_KEY(KC_I) {
+        SEND_STRING("ij");
+    }
     // Note: This is not an array, you don't need to put any commas
     // or semicolons between sequences.
     SEQ_THREE_KEYS(KC_E, KC_N, KC_V) {
