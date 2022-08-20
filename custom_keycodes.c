@@ -8,7 +8,8 @@
 
 // Layer Keys
 #define BASE        TO(_BASE)
-#define COLEMAK     TO(_COLEMAK_DH)
+#define COLEMAKDH   TO(_COLEMAK_DH)
+#define COLEMAK     TO(_COLEMAK)
 #define SYMB        MO(_SYMBOLS)
 #define NAVI        MO(_NAVIGATION)
 #define NUMBMO      MO(_NUMBERS)
