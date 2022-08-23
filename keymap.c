@@ -10,12 +10,11 @@ enum layers {
 	_FUNCTION,
     _RGB,
     _GAMING,
-    _STENO
 };
 
 #include "custom_keycodes.c"
 #include "g/keymap_combo.h"
-#include "keymap_steno.h"
+
 
 void eeconfig_init_user() {
     steno_set_mode(STENO_MODE_GEMINI); // or STENO_MODE_BOLT
@@ -113,7 +112,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	),
 	[_FUNCTION] = LAYOUT(
 		_______, _______, _______, _______, _______, _______, 														    _______, KC_F9, KC_F10, KC_F11, KC_F12,  _______, 
-		_______, KC_RSFT, KC_LCTL, KC_LALT, KC_LGUI, _______,														    _______, KC_F5, KC_F6,	KC_F7,  KC_F8,   _______,  
+		_______, _______, KC_LALT, KC_LCTL, KC_RSFT, _______,														    _______, KC_F5, KC_F6,	KC_F7,  KC_F8,   _______,  
 		_______, _______, _______, _______, _______, _______, _______, _______, 				      _______, _______, _______, KC_F1, KC_F2, 	KC_F3,  KC_F4,   _______, 
 						   		   _______, _______, _______, BASE, _______, 				      _______, _______, _______, _______, BASE
 	),
@@ -128,16 +127,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 		_______, _______, KC_A, KC_S, KC_D, KC_F, 													_______, _______, _______, _______, _______, 	_______, 
 		_______, _______, KC_Z, KC_X, KC_C, KC_V, _______, _______, 		  	_______, _______, 	_______, _______, _______, _______, _______, 	_______, 
 									_______, _______, _______, _______, _______, 			_______, _______, 	_______, _______, BASE
-    ),
-    // // ---- STENO ---- {{{
-    [_STENO] = LAYOUT(
-    _______, STN_N1,  STN_N2,  STN_N3,  STN_N4,  STN_N5,                                            STN_N6,  STN_N7,  STN_N8,  STN_N9,  STN_NA,  ,
-    _______, STN_S1,  STN_TL,  STN_PL,  STN_HL,  STN_ST1,                                           STN_ST3, STN_FR,  STN_PR,  STN_LR,  STN_TR,  STN_DR,
-    _______, STN_S2,  STN_KL,  STN_WL,  STN_RL,  STN_ST2, _______,     _______,       _______, _______, STN_ST4, STN_RR,  STN_BR,  STN_GR,  STN_SR,  STN_ZR,
-                                _______, _______,     STN_A,   STN_A,   STN_O, STN_N1,  STN_E,   STN_U,   _______, BASE
     )
-// ---- END STENO ---- }}}
-
 };
 
 const key_override_t delete_key_override = ko_make_basic(MOD_MASK_SHIFT, KC_BSPC, KC_DEL);
@@ -211,6 +201,9 @@ bool oled_task_user(void) {
                 break;
             case _COLEMAK_DH:
                 oled_write_P(PSTR("Colemak-DH\n"), false);
+                break;
+            case _COLEMAK:
+                oled_write_P(PSTR("Colemak\n"), false);
                 break;
             case _SYMBOLS:
                 oled_write_P(PSTR("Symbols\n"), false);
