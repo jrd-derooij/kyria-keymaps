@@ -83,7 +83,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 		KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5, 									 	  			      KC_6,    KC_7,    KC_8,    KC_9,    KC_0,   _______, 
 		_______, KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC,								 	  			      KC_LBRC, KC_LPRN, KC_RPRN, KC_RBRC, KC_ENT, _______, 
 		_______, KC_CIRC, KC_AMPR, KC_ASTR, KC_PLUS, KC_EQL,  _______, _______, 		        _______, _______, KC_UNDSC,KC_LCBR, KC_RCBR, KC_RCBR, _______, _______, 
-						           COLEMAK, TO(_STENO), _______, _______, _______, 	        _______, _______, _______, _______, TO(_RGB)
+						           COLEMAK, _______, _______, _______, _______, 	        _______, _______, _______, _______, TO(_RGB)
 	),
     [_NAVIGATION] = LAYOUT(
       _______, _______, _______, _______, _______, _______,                                              KC_PGUP, KC_HOME, KC_UP,   KC_END,  _______, _______,
