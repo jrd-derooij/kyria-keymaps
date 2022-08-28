@@ -16,11 +16,6 @@ enum layers {
 #include "g/keymap_combo.h"
 
 
-void eeconfig_init_user() {
-    steno_set_mode(STENO_MODE_GEMINI); // or STENO_MODE_BOLT
-}
-
-
 uint16_t get_combo_term(uint16_t index, combo_t *combo) {
     switch (index) {
     // SHORT TERMS
