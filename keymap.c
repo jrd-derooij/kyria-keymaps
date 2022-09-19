@@ -2,6 +2,7 @@
 
 enum layers {
 	_BASE = 0,
+    _DECORRESP,
     _COLEMAK,
     _COLEMAK_DH,
 	_SYMBOLS,
@@ -54,7 +55,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	 	CTL_ESC, KC_A, HRM_S, HRM_D, HRM_F, KC_G,                             KC_H, HRM_J, HRM_K, HRM_L, KC_SCLN, KC_QUOT, 
 		KC_LSFT, KC_Z, KC_X, KC_C, KC_V, KC_B, XXXXXXX, XXXXXXX,            XXXXXXX, XXXXXXX,      KC_N, KC_M, KC_COMM, KC_DOT, KC_SLSH, KC_MINS, 
 	 	        KC_LCTL, KC_LALT, KC_LGUI, SPC_NAV, KC_LEAD,                 KC_BSPC, SYMB, FUNC, KC_MEH, NUMBTO
-	),           
+	),
+    [_DECORRESP] = LAYOUT(
+    KC_TAB  , KC_Q ,  KC_F  ,  KC_K  ,   KC_L ,   KC_M ,                                          KC_W,  KC_V  ,  KC_U  ,   KC_J  ,  KC_Y, ______,
+    CTL_ESC , KC_S ,  KC_D ,  KC_T,   KC_N,  KC_R ,                                          KC_I,  KC_A,  KC_E,   KC_O,  KC_G , KC_QUOT,
+    KC_LSFT , KC_SCLN,  KC_Z   ,  KC_B  ,   KC_H ,   KC_X , XXXXXXX,XXXXXXX,     XXXXXXX  , XXXXXXX, KC_P, KC_C, KC_COMM, KC_DOT ,KC_SLSH, KC_MINS,
+                COLEMAKDH, KC_LALT, KC_LGUI, SPC_NAV, KC_LEAD,       KC_BSPC, SYMB, FUNC, KC_MEH, NUMBTO
+    ),           
     [_COLEMAK] = LAYOUT(
      KC_TAB  , KC_Q ,  KC_W   ,  KC_F  ,   KC_P ,   KC_G ,                                          KC_J,  KC_L  ,  KC_U  ,   KC_Y  ,  KC_SCLN, KC_BSLS,
      CTL_ESC , KC_A ,  HRM_Rc ,  HRM_Sc,   HRM_Tc,  KC_D ,                                          KC_H,  HRM_Nc,  HRM_Ec,   HRM_Ic,  KC_O , KC_QUOT,
@@ -71,7 +78,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 		KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5, 									 	  			      KC_6,    KC_7,    KC_8,    KC_9,    KC_0,   _______, 
 		_______, KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC,								 	  			      KC_LBRC, KC_LPRN, KC_RPRN, KC_RBRC, KC_ENT, _______, 
 		_______, KC_CIRC, KC_AMPR, KC_ASTR, KC_PLUS, KC_EQL,  _______, _______, 		        _______, _______, KC_UNDSC,KC_LCBR, KC_RCBR, KC_RCBR, _______, _______, 
-						           COLEMAK, _______, _______, _______, _______, 	        _______, _______, _______, _______, TO(_RGB)
+						           COLEMAK, TO(_DECORRESP), _______, _______, _______, 	        _______, _______, _______, _______, TO(_RGB)
 	),
     [_NAVIGATION] = LAYOUT(
       _______, _______, _______, KC_WBAK, KC_WFWD, _______,                                              KC_PGUP, KC_HOME, KC_UP,   KC_END,  _______, _______,
