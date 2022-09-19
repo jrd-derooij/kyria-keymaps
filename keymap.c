@@ -57,7 +57,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	 	        KC_LCTL, KC_LALT, KC_LGUI, SPC_NAV, KC_LEAD,                 KC_BSPC, SYMB, FUNC, KC_MEH, NUMBTO
 	),
     [_DECORRESP] = LAYOUT(
-    KC_TAB  , KC_Q ,  KC_F  ,  KC_K  ,   KC_L ,   KC_M ,                                          KC_W,  KC_V  ,  KC_U  ,   KC_J  ,  KC_Y, ______,
+    KC_TAB  , KC_Q ,  KC_F  ,  KC_K  ,   KC_L ,   KC_M ,                                          KC_W,  KC_V  ,  KC_U  ,   KC_J  ,  KC_Y, XXXXXXX,
     CTL_ESC , KC_S ,  KC_D ,  KC_T,   KC_N,  KC_R ,                                          KC_I,  KC_A,  KC_E,   KC_O,  KC_G , KC_QUOT,
     KC_LSFT , KC_SCLN,  KC_Z   ,  KC_B  ,   KC_H ,   KC_X , XXXXXXX,XXXXXXX,     XXXXXXX  , XXXXXXX, KC_P, KC_C, KC_COMM, KC_DOT ,KC_SLSH, KC_MINS,
                 COLEMAKDH, KC_LALT, KC_LGUI, SPC_NAV, KC_LEAD,       KC_BSPC, SYMB, FUNC, KC_MEH, NUMBTO
