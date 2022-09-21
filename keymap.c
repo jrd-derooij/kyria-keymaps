@@ -3,7 +3,6 @@
 enum layers {
 	_BASE = 0,
     _QWERTY,
-    _COLEMAK_DH,
 	_SYMBOLS,
 	_NAVIGATION,
 	_NUMBERS,
@@ -53,7 +52,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_TAB  , KC_Q ,  KC_W   ,  KC_F  ,   KC_P ,   KC_G ,                                          KC_J,  KC_L  ,  KC_U  ,   KC_Y  ,  KC_SCLN, KC_BSLS,
         CTL_ESC , KC_A ,  HRM_Rc ,  HRM_Sc,   HRM_Tc,  KC_D ,                                          KC_H,  HRM_Nc,  HRM_Ec,   HRM_Ic,  KC_O , KC_QUOT,
         KC_LSFT , KC_Z ,  KC_X   ,  KC_C  ,   KC_V ,   KC_B , XXXXXXX,XXXXXXX,     XXXXXXX  , XXXXXXX, KC_K, KC_M, KC_COMM, KC_DOT ,KC_SLSH, KC_MINS,
-                    COLEMAKDH, KC_LALT, KC_LGUI, SPC_NAV, _______,       KC_BSPC, SYMB, FUNC, KC_MEH, NUMBTO
+                    _______, KC_LALT, KC_LGUI, SPC_NAV, _______,       KC_BSPC, SYMB, FUNC, KC_MEH, NUMBTO
 	),        
     [_QWERTY] = LAYOUT(
 		KC_TAB,  KC_Q, KC_W, KC_E, KC_R, KC_T,                                                     KC_Y, KC_U, KC_I, KC_O, KC_P, KC_BSLS, 
@@ -61,17 +60,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 		KC_LSFT, KC_Z, KC_X, KC_C, KC_V, KC_B, XXXXXXX, XXXXXXX,            XXXXXXX, XXXXXXX,      KC_N, KC_M, KC_COMM, KC_DOT, KC_SLSH, KC_MINS, 
 	 	        KC_LCTL, KC_LALT, KC_LGUI, SPC_NAV, _______,                 KC_BSPC, SYMB, FUNC, KC_MEH, NUMBTO
     ),
-    [_COLEMAK_DH] = LAYOUT(
-     KC_TAB  , KC_Q ,  KC_W   ,  KC_F  ,   KC_P ,   KC_B ,                                          KC_J,  KC_L  ,  KC_U  ,   KC_Y  ,  KC_SCLN, KC_BSLS,
-     CTL_ESC , KC_A ,  HRM_Rc ,  HRM_Sc,   HRM_Tc,  KC_G ,                                          KC_M,  HRM_Nc,  HRM_Ec,   HRM_Ic,  KC_O , KC_QUOT,
-     KC_LSFT , KC_Z ,  KC_X   ,  KC_C  ,   KC_D ,   KC_V , XXXXXXX,XXXXXXX,     XXXXXXX  , XXXXXXX, KC_K, KC_H, KC_COMM, KC_DOT ,KC_SLSH, KC_MINS,
-	 	        KC_LCTL, KC_LALT, KC_LGUI, SPC_NAV, _______,                    KC_BSPC, SYMB, FUNC, KC_MEH, NUMBTO
-    ),
+    // [_COLEMAK_DH] = LAYOUT(
+    //  KC_TAB  , KC_Q ,  KC_W   ,  KC_F  ,   KC_P ,   KC_B ,                                          KC_J,  KC_L  ,  KC_U  ,   KC_Y  ,  KC_SCLN, KC_BSLS,
+    //  CTL_ESC , KC_A ,  HRM_Rc ,  HRM_Sc,   HRM_Tc,  KC_G ,                                          KC_M,  HRM_Nc,  HRM_Ec,   HRM_Ic,  KC_O , KC_QUOT,
+    //  KC_LSFT , KC_Z ,  KC_X   ,  KC_C  ,   KC_D ,   KC_V , XXXXXXX,XXXXXXX,     XXXXXXX  , XXXXXXX, KC_K, KC_H, KC_COMM, KC_DOT ,KC_SLSH, KC_MINS,
+	//  	        KC_LCTL, KC_LALT, KC_LGUI, SPC_NAV, _______,                    KC_BSPC, SYMB, FUNC, KC_MEH, NUMBTO
+    // ),
 	[_SYMBOLS] = LAYOUT(
 		KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5, 									 	  			      KC_6,    KC_7,    KC_8,    KC_9,    KC_0,   _______, 
 		_______, KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC,								 	  			      KC_LBRC, KC_LPRN, KC_RPRN, KC_RBRC, KC_ENT, _______, 
 		_______, KC_CIRC, KC_AMPR, KC_ASTR, KC_PLUS, KC_EQL,  _______, _______, 		        _______, _______, KC_UNDSC,KC_LCBR, KC_RCBR, KC_RCBR, _______, _______, 
-						           QWERTY, TO(_DECORRESP), _______, _______, _______, 	        _______, _______, _______, _______, TO(_RGB)
+						           QWERTY, _______, _______, _______, _______, 	        _______, _______, _______, _______, TO(_RGB)
 	),
     [_NAVIGATION] = LAYOUT(
       _______, _______, _______, KC_WBAK, KC_WFWD, _______,                                              KC_PGUP, KC_HOME, KC_UP,   KC_END,  _______, _______,
@@ -195,9 +194,9 @@ bool oled_task_user(void) {
             case _BASE:
                 oled_write_P(PSTR("Colemak\n"), false);
                 break;
-            case _COLEMAK_DH:
-                oled_write_P(PSTR("Colemak-DH\n"), false);
-                break;
+            // case _COLEMAK_DH:
+            //     oled_write_P(PSTR("Colemak-DH\n"), false);
+            //     break;
             case _QWERTY:
                 oled_write_P(PSTR("Qwerty\n"), false);
                 break;
