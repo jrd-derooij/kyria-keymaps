@@ -8,7 +8,7 @@
 
 // Layer Keys
 #define BASE        TO(_BASE)
-#define COLEMAKDH   TO(_COLEMAK_DH)
+// #define COLEMAKDH   TO(_COLEMAK_DH)
 #define QWERTY      TO(_QWERTY)
 #define SYMB        MO(_SYMBOLS)
 #define NAVI        MO(_NAVIGATION)
