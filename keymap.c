@@ -49,9 +49,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     *                        `----------------------------------'  `----------------------------------'
     */
 	[_BASE] = LAYOUT(
-        KC_TAB  , KC_Q ,  KC_W   ,  KC_F  ,   KC_P ,   KC_B ,                                          KC_J,  KC_L  ,  KC_U  ,   KC_Y  ,  KC_SCLN, KC_BSLS,
-        CTL_ESC , KC_A ,  HRM_Rc ,  HRM_Sc,   HRM_Tc,  KC_G ,                                          KC_H,  HRM_Nc,  HRM_Ec,   HRM_Ic,  KC_O , KC_QUOT,
-        KC_LSFT , KC_Z ,  KC_X   ,  KC_C  ,   KC_D ,   KC_V , XXXXXXX,XXXXXXX,     XXXXXXX  , XXXXXXX, KC_K, KC_M, KC_COMM, KC_DOT ,KC_SLSH, KC_MINS,
+        KC_TAB  , KC_Q ,  KC_W   ,  KC_F  ,   KC_P ,   KC_G ,                                          KC_J,  KC_L  ,  KC_U  ,   KC_Y  ,  KC_SCLN, KC_BSLS,
+        CTL_ESC , KC_A ,  HRM_Rc ,  HRM_Sc,   HRM_Tc,  KC_D ,                                          KC_H,  HRM_Nc,  HRM_Ec,   HRM_Ic,  KC_O , KC_QUOT,
+        KC_LSFT , KC_Z ,  KC_X   ,  KC_C  ,   KC_V ,   KC_B , XXXXXXX,XXXXXXX,     XXXXXXX  , XXXXXXX, KC_K, KC_M, KC_COMM, KC_DOT ,KC_SLSH, KC_MINS,
                     _______, KC_LALT, KC_LGUI, SPC_NAV, _______,       KC_BSPC, SYMB, FUNC, KC_MEH, NUMBTO
 	),        
     [_QWERTY] = LAYOUT(
