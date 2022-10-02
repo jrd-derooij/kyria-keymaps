@@ -2,7 +2,7 @@
 
 enum layers {
 	_BASE = 0,
-    _QWERTY,
+    _COLEMAK,
 	_SYMBOLS,
 	_NAVIGATION,
 	_NUMBERS,
@@ -54,11 +54,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 		KC_LSFT, KC_Z, KC_X, KC_C, KC_V, KC_B, XXXXXXX, XXXXXXX,            XXXXXXX, XXXXXXX,      KC_N, KC_M, KC_COMM, KC_DOT, KC_SLSH, KC_MINS, 
 	 	        KC_LCTL, KC_LALT, KC_LGUI, SPC_NAV, _______,                 KC_BSPC, SYMB, FUNC, KC_MEH, NUMBTO
 	),        
-    [_QWERTY] = LAYOUT(
-		KC_TAB,  KC_Q, KC_W, KC_E, KC_R, KC_T,                                                     KC_Y, KC_U, KC_I, KC_O, KC_P, KC_BSLS, 
-	 	CTL_ESC, KC_A, HRM_S, HRM_D, HRM_F, KC_G,                             KC_H, HRM_J, HRM_K, HRM_L, KC_SCLN, KC_QUOT, 
-		KC_LSFT, KC_Z, KC_X, KC_C, KC_V, KC_B, XXXXXXX, XXXXXXX,            XXXXXXX, XXXXXXX,      KC_N, KC_M, KC_COMM, KC_DOT, KC_SLSH, KC_MINS, 
-	 	        KC_LCTL, KC_LALT, KC_LGUI, SPC_NAV, _______,                 KC_BSPC, SYMB, FUNC, KC_MEH, NUMBTO
+    [_COLEMAK] = LAYOUT(
+     KC_TAB  , KC_Q ,  KC_W   ,  KC_F  ,   KC_P ,   KC_G ,                                          KC_J,  KC_L  ,  KC_U  ,   KC_Y  ,  KC_SCLN, KC_BSLS,
+     CTL_ESC , KC_A ,  HRM_Rc ,  HRM_Sc,   HRM_Tc,  KC_D ,                                          KC_H,  HRM_Nc,  HRM_Ec,   HRM_Ic,  KC_O , KC_QUOT,
+     KC_LSFT , KC_Z ,  KC_X   ,  KC_C  ,   KC_V ,   KC_B , XXXXXXX,XXXXXXX,     XXXXXXX  , XXXXXXX, KC_K, KC_M, KC_COMM, KC_DOT ,KC_SLSH, KC_MINS,
+	 	        KC_LCTL, KC_LALT, KC_LGUI, SPC_NAV, _______,                    KC_BSPC, SYMB, FUNC, KC_MEH, NUMBTO
     ),
     // [_COLEMAK_DH] = LAYOUT(
     //  KC_TAB  , KC_Q ,  KC_W   ,  KC_F  ,   KC_P ,   KC_B ,                                          KC_J,  KC_L  ,  KC_U  ,   KC_Y  ,  KC_SCLN, KC_BSLS,
@@ -194,9 +194,9 @@ bool oled_task_user(void) {
             case _BASE:
                 oled_write_P(PSTR("Qwerty\n"), false);
                 break;
-            // case _COLEMAK_DH:
-            //     oled_write_P(PSTR("Colemak-DH\n"), false);
-            //     break;
+            case _COLEMAK:
+                oled_write_P(PSTR("Colemak\n"), false);
+                break;
             case _QWERTY:
                 oled_write_P(PSTR("Qwerty\n"), false);
                 break;
