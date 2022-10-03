@@ -152,40 +152,6 @@ const key_override_t **key_overrides = (const key_override_t *[]){
 	NULL // Null terminate the array of overrides!
 };
 
-bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-    #ifdef CONSOLE_ENABLE
-        uprintf("0x%04X,%u,%u,%u,%b,0x%02X,0x%02X,%u\n",
-             keycode,
-             record->event.key.row,
-             record->event.key.col,
-             get_highest_layer(layer_state),
-             record->event.pressed,
-             get_mods(),
-             get_oneshot_mods(),
-             record->tap.count
-             );
-    #endif
-    switch (keycode) {
-    //...
-    }
-    return true;
-}
-
-bool process_record_user(uint16_t keycode, keyrecord_t* record) {
-    switch(keycode) {
-        case KC_IJ:
-            if (record->event.pressed) {
-                register_code(KC_I);
-                register_code(KC_J);
-            } else {
-                unregister_code(KC_I);
-                unregister_code(KC_J);
-            }
-            return false;
-    }
-    return true;
-}
-
 // LEADER_EXTERNS();
 
 // void matrix_scan_user(void) {
