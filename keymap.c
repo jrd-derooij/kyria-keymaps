@@ -197,12 +197,9 @@ bool oled_task_user(void) {
             case _COLEMAK:
                 oled_write_P(PSTR("Colemak\n"), false);
                 break;
-            case _QWERTY:
-                oled_write_P(PSTR("Qwerty\n"), false);
-                break;
-            case _SYMBOLS:
-                oled_write_P(PSTR("Symbols\n"), false);
-                break;
+            // case _SYMBOLS:
+            //     oled_write_P(PSTR("Symbols\n"), false);
+            //     break;
             case _NAVIGATION:
                 oled_write_P(PSTR("Navigation\n"), false);
                 break;
