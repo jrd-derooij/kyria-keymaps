@@ -26,6 +26,21 @@ uint16_t get_combo_term(uint16_t index, combo_t *combo) {
     return COMBO_TERM;
 }
 
+bool process_record_user(uint16_t keycode, keyrecord_t* record) {
+    switch(keycode) {
+        case KC_IJ:
+            if (record->event.pressed) {
+                register_code(KC_I);
+                register_code(KC_J);
+            } else {
+                unregister_code(KC_I);
+                unregister_code(KC_J);
+            }
+            return false;
+    }
+    return true;
+}
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     // TEMPLATE LAYOUT
     // _______, _______, _______, _______, _______, _______,                                          _______, _______, _______, _______, _______, _______,
