@@ -8,7 +8,6 @@
 
 // Layer Keys
 #define BASE        TO(_BASE)
-// #define COLEMAKDH   TO(_COLEMAK_DH)
 #define COLEMAK     TO(_COLEMAK)
 #define SYMB        MO(_SYMBOLS)
 #define NAVI        MO(_NAVIGATION)
@@ -30,3 +29,6 @@
 #define HRM_Nc      MT(MOD_RSFT, KC_N)
 #define HRM_Ec      MT(MOD_RCTL, KC_E)
 #define HRM_Ic      MT(MOD_LALT, KC_I)
+
+
+#define KC_IJ
