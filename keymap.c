@@ -11,6 +11,10 @@ enum layers {
     _GAMING,
 };
 
+enum custom_keycodes {
+    KC_IJ = SAFE_RANGE,
+};
+
 #include "custom_keycodes.c"
 #include "g/keymap_combo.h"
 

@@ -29,6 +29,3 @@
 #define HRM_Nc      MT(MOD_RSFT, KC_N)
 #define HRM_Ec      MT(MOD_RCTL, KC_E)
 #define HRM_Ic      MT(MOD_LALT, KC_I)
-
-
-#define KC_IJ
